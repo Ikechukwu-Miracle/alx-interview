@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Lock boxes.
+Lock boxes
 """
 
 
@@ -9,7 +9,11 @@ def canUnlockAll(boxes):
 
     Args:
         boxes (list): The boxes containing keys
+
+    Returns:
+        True if all the boxes are unlocked and False otherwise
     """
+    
     n = len(boxes)
     visited = [False] * n
     visited[0] = True
