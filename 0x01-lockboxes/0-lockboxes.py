@@ -5,7 +5,11 @@ Lock boxes.
 
 
 def canUnlockAll(boxes):
-    """Checks for unlocked boxes"""
+    """Checks for unlocked boxes
+
+    Args:
+        boxes (list): The boxes containing keys
+    """
     n = len(boxes)
     visited = [False] * n
     visited[0] = True
@@ -19,18 +23,3 @@ def canUnlockAll(boxes):
                 queue.append(key)
 
     return all(visited)
-
-
-if __name__ == "__main__":
-    """Sample Test cases"""
-    boxes = [[1], [2], [3], [4], []]
-    print(canUnlockAll(boxes))
-
-    boxes = [[1, 4, 6], [2], [0, 4, 1], [5, 6, 2], [3], [4, 1], [6]]
-    print(canUnlockAll(boxes))
-
-    boxes = [[1, 4], [2], [0, 4, 1], [3], [], [4, 1], [5, 6]]
-    print(canUnlockAll(boxes))
-
-    boxes = [[4, 6], [2], [0, 4, 1], [3], [], [4, 1], [5, 6]]
-    print(canUnlockAll(boxes))
