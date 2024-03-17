@@ -1,29 +1,22 @@
 #!/usr/bin/env python3
-"""
-Lock boxes
-"""
+"""Lock boxes."""
 
 
 def canUnlockAll(boxes):
-    """Checks for unlocked boxes
+    """Determine if all the boxes can be opened."""
+    if not boxes:
+        return False
+    size = len(boxes)
+    checker = {}
+    index = 0
 
-    Args:
-        boxes (list): The boxes containing keys
-
-    Returns:
-        True if all the boxes are unlocked and False otherwise
-    """
-    
-    n = len(boxes)
-    visited = [False] * n
-    visited[0] = True
-    queue = [0]
-
-    while queue:
-        current_box = queue.pop()
-        for key in boxes[current_box]:
-            if 0 <= key < n and not visited[key]:
-                visited[key] = True
-                queue.append(key)
-
-    return all(visited)
+    for box in boxes:
+        if len(box) == 0 or index == 0:
+            checker[index] = -1
+        for key in box:
+            if key < size and key != index:
+                checker[key] = key
+        if len(checker) == size:
+            return True
+        index += 1
+    return False
