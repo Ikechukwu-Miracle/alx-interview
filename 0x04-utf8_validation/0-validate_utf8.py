@@ -4,22 +4,21 @@
 
 def validUTF8(data):
     """Validates a given data set as UTF-8"""
-    num_bytes = 0
-    for num in data:
+    num_bytes, maskF, maskC = 0, 1 << 7, 1 << 6
+
+    for n in data:
+        mask = maskF
         if num_bytes == 0:
-            if (num >> 3) == 0b11110:
-                num_bytes = 3
-            elif (num >> 4) == 0b1110:
-                num_bytes = 2
-            elif (num >> 5) == 0b110:
-                num_bytes = 1
-            elif (num >> 7) == 0b0:
-                num_bytes = 0
-            else:
+            while mask & n:
+                num_bytes += 1
+                mask = mask >> 1
+
+            if num_bytes == 0:
+                continue
+            if num_bytes == 1 or num_bytes == 4:
                 return False
         else:
-            if (num >> 6) != 0b10:
+            if not (n & maskF and not (n & maskC)):
                 return False
-            num_bytes -= 1
-
-        return num_bytes == 0
+        num_bytes -= 1
+    return num_bytes == 0
