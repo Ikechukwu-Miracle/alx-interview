@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 """Minimum operations required to print a certain number of characters."""
 
 
@@ -11,4 +11,3 @@ def minOperations(n):
         if n % i == 0:
             return minOperations(n // i) + i
     return n
-
