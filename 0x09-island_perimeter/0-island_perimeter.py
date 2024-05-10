@@ -2,10 +2,7 @@
 """Island perimeter algorithm"""
 
 
-from typing import List
-
-
-def island_perimeter(grid: List[List[int]]) -> int:
+def island_perimeter(grid):
     """Calculates the peimeter of the Island represented
     as an NxN matrix.
     Args:
