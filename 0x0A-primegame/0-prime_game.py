@@ -10,7 +10,7 @@ def isWinner(x, nums):
     max_n = max(nums)
     primes = sieve(max_n)
     prime_set = set(primes)
-    
+
     maria_wins = 0
     ben_wins = 0
 
@@ -18,7 +18,7 @@ def isWinner(x, nums):
         if n == 1:
             ben_wins += 1
             continue
-        
+
         current_set = set(range(1, n + 1))
         maria_turn = True
 
@@ -45,10 +45,12 @@ def isWinner(x, nums):
         return "Ben"
     else:
         return None
-    
+
 
 def sieve(n):
-    """Helper function to generate list of primes up to n using Sieve of Eratosthenes"""
+    """Helper function to generate list of
+    primes up to n using Sieve of Eratosthenes
+    """
     is_prime = [True] * (n + 1)
     p = 2
     while (p * p <= n):
